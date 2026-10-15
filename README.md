@@ -2,66 +2,73 @@
 
 ## 1. Sobre o projeto
 
-O AlertaBrotas é um protótipo acadêmico desenvolvido para a atividade final do curso Técnico em Desenvolvimento de Sistemas do Senai São Paulo.
+O **AlertaBrotas** é um protótipo acadêmico desenvolvido como atividade final do curso Técnico em Desenvolvimento de Sistemas do SENAI São Paulo.
 
-A proposta demonstra como dados meteorológicos públicos e um sensor simulado podem ser utilizados em um painel de monitoramento ambiental relacionado a Brotas/SP.
+O projeto demonstra como dados meteorológicos públicos e a simulação de um sensor de nível de água podem ser utilizados em um painel de monitoramento ambiental relacionado ao município de Brotas, São Paulo.
 
-O projeto é demonstrativo. Não realiza previsão de enchentes, não mede o nível real de rios e não substitui os canais oficiais de emergência.
+A aplicação apresenta informações meteorológicas obtidas por meio de uma API e uma leitura simulada do nível de água, permitindo visualizar classificações e testar regras de negócio.
+
+> **Importante:** este projeto possui finalidade exclusivamente educacional. Não realiza previsões de enchentes, não mede o nível real de rios e não substitui os sistemas oficiais de monitoramento ou os canais de emergência.
 
 ## 2. Problema investigado
 
-O projeto investiga como dados meteorológicos e monitoramento simulado poderiam contribuir para acompanhar episódios de chuva intensa e apoiar a conscientização preventiva em Brotas/SP.
+O projeto investiga como dados meteorológicos e o monitoramento simulado do nível de água podem contribuir para o acompanhamento de episódios de chuva intensa e para a conscientização preventiva em Brotas/SP.
 
-A justificativa deve ser acompanhada de fontes verificáveis, como notícias confiáveis, documentos públicos e registros oficiais.
+A proposta utiliza conceitos de Internet das Coisas (IoT) e desenvolvimento web para demonstrar como informações ambientais podem ser apresentadas de maneira acessível.
 
-O projeto não afirma que alagamentos acontecem diariamente nem que os limites simulados representam risco real.
+A contextualização do problema considera a importância de consultar fontes confiáveis, como notícias, documentos públicos e registros oficiais. O projeto não pressupõe que alagamentos ocorram diariamente nem que os limites utilizados na simulação representem riscos reais.
 
-## 3. Objetivo
+## 3. Objetivos
 
-Desenvolver um protótipo que:
+### 3.1. Objetivo geral
 
-- Consulte dados meteorológicos da API Open-Meteo.
-- Apresente temperatura e chuva no navegador.
-- Simule a leitura de um sensor de nível de água.
-- Classifique o nível em Normal, Atenção ou Alerta.
-- Permita executar testes da regra de negócio.
-- Demonstre conceitos de IoT e desenvolvimento web.
+Desenvolver um protótipo de monitoramento ambiental que demonstre a utilização de dados meteorológicos públicos, simulação de sensores e desenvolvimento web.
+
+### 3.2. Objetivos específicos
+
+- Consultar dados meteorológicos por meio da API Open-Meteo.
+- Apresentar informações de temperatura e precipitação no navegador.
+- Simular a leitura de um sensor de nível de água.
+- Classificar o nível simulado nas categorias Normal, Atenção e Alerta.
+- Permitir a execução de testes das regras de negócio.
+- Demonstrar conceitos de IoT, programação e desenvolvimento de interfaces web.
 
 ## 4. Tecnologias utilizadas
 
-- HTML5
-- CSS3
-- JavaScript
-- API Open-Meteo
-- ESP32
-- Wokwi
-- Visual Studio Code
-- Git e GitHub
+- **HTML5:** estrutura da interface web.
+- **CSS3:** estilização e responsividade.
+- **JavaScript:** lógica da aplicação e interação com os dados.
+- **Open-Meteo API:** fornecimento de dados meteorológicos.
+- **ESP32:** microcontrolador utilizado na simulação IoT.
+- **Wokwi:** simulador de circuitos eletrônicos.
+- **Visual Studio Code:** ambiente de desenvolvimento.
+- **Git:** controle de versão.
+- **GitHub:** hospedagem do código-fonte e da documentação.
 
-## 5. API utilizada
+## 5. API meteorológica
 
 **Nome:** Open-Meteo Forecast API
 
-**Documentação oficial:** [Open-Meteo](https://open-meteo.com/en/docs)
+**Documentação oficial:** [Open-Meteo — Forecast API](https://open-meteo.com/en/docs)
 
 **Endpoint:**
 
 `https://api.open-meteo.com/v1/forecast`
 
-**Dados utilizados:**
+### Dados utilizados
 
-- `temperature_2m`: temperatura do ar a dois metros de altura.
-- `rain`: valor de precipitação retornado pela API para o período consultado.
+- `temperature_2m`: temperatura do ar a dois metros de altura, expressa em graus Celsius.
+- `rain`: precipitação, em milímetros, conforme o período retornado pela consulta.
 
-A consulta utiliza coordenadas de referência de Brotas/SP e o fuso horário `America/Sao_Paulo`.
+A consulta utiliza coordenadas geográficas de referência de Brotas/SP e o fuso horário `America/Sao_Paulo`.
 
-O acesso utilizado no protótipo não exige chave de API. A disponibilidade depende do serviço externo, da conexão e das condições de uso da API.
+O acesso utilizado pelo protótipo não exige chave de API. Entretanto, a consulta depende da disponibilidade do serviço externo, da conexão com a internet e das condições de utilização da API.
 
-Os dados são meteorológicos fornecidos pela API, e não medições de um sensor instalado na cidade.
+Os dados apresentados são informações meteorológicas fornecidas pela Open-Meteo e não correspondem a medições realizadas por um sensor físico instalado em Brotas.
 
 ## 6. Regra de negócio
 
-O protótipo utiliza as seguintes faixas para classificar o nível simulado de água:
+O protótipo utiliza faixas percentuais para classificar o nível simulado de água.
 
 | Nível simulado | Classificação |
 |---|---|
@@ -69,100 +76,136 @@ O protótipo utiliza as seguintes faixas para classificar o nível simulado de �
 | 50% a 74% | Atenção |
 | 75% a 100% | Alerta |
 
-Os limites são didáticos e foram definidos para demonstrar a lógica de programação. Não representam limites oficiais de segurança.
+Os limites são didáticos e foram definidos para demonstrar a aplicação de condições lógicas na programação. Não representam parâmetros oficiais de segurança, níveis reais de rios ou critérios técnicos para emissão de alertas.
 
 ## 7. Estrutura dos arquivos
 
-O projeto está organizado em uma pasta principal e contém os arquivos responsáveis pela interface web e pelo funcionamento da aplicação.
+A estrutura principal do projeto está organizada da seguinte forma:
 
 ```text
 iot-brotas/
+├── README.md
 └── src/
     └── frontend/
-        ├── app.js
         ├── index.html
-        └── style.css
-└── README.md
+        ├── style.css
+        └── app.js
 ```
 
-**Descrição dos arquivos:**
+Caso os arquivos da simulação IoT estejam presentes no repositório, a estrutura também poderá incluir:
 
-- `README.md`: documentação principal do projeto, com informações sobre seus objetivos, funcionalidades e instruções de execução.
-- `src/frontend/index.html`: estrutura HTML da interface do sistema.
-- `src/frontend/style.css`: estilos visuais da interface, incluindo a organização dos elementos e a responsividade.
-- `src/frontend/app.js`: lógica JavaScript responsável pelo comportamento da interface e pela interação com os dados do sistema.
+```text
+iot/
+├── sketch.ino
+└── diagram.json
+```
 
-A organização dos arquivos separa os componentes da interface web, facilitando a manutenção e a evolução do projeto.
+### Descrição dos arquivos
 
-## 8. Como executar a interface
+- **`README.md`:** documentação principal, com informações sobre o projeto, seus objetivos, tecnologias e instruções de execução.
+- **`src/frontend/index.html`:** estrutura HTML da interface web.
+- **`src/frontend/style.css`:** estilos visuais, organização dos elementos e regras de responsividade.
+- **`src/frontend/app.js`:** lógica JavaScript responsável pelo comportamento da interface e pela interação com os dados.
+- **`iot/sketch.ino`:** código da simulação do ESP32, caso esteja disponível no repositório.
+- **`iot/diagram.json`:** configuração do circuito simulado no Wokwi, caso esteja disponível.
 
-1. Abra a pasta do projeto no Visual Studio Code.
-2. Abra o arquivo `index.html` no navegador. Recomenda-se utilizar a extensão Live Server.
-3. Permita o acesso à internet para consultar a API Open-Meteo.
-4. Utilize o botão **Atualizar clima**.
-5. Mova o controle de nível para verificar as classificações.
-6. Clique em **Executar testes** e registre os resultados.
+A separação dos arquivos facilita a organização, a manutenção e a evolução do projeto.
 
-Os nomes dos botões devem corresponder aos que realmente existem na interface.
+## 8. Como executar a interface web
 
-## 9. Como executar a simulação IoT
+1. Clone o repositório ou faça o download dos arquivos do projeto.
+2. Abra a pasta do projeto no Visual Studio Code.
+3. Abra o arquivo `src/frontend/index.html` utilizando a extensão Live Server ou outro servidor local compatível.
+4. Certifique-se de que o navegador tenha acesso à internet para consultar a API Open-Meteo.
+5. Utilize o botão **Atualizar clima**, caso esteja disponível na interface.
+6. Movimente o controle de nível de água para verificar as classificações, caso esse recurso esteja implementado.
+7. Utilize o botão **Executar testes**, caso esteja disponível, para verificar os resultados da regra de negócio.
 
-1. Acesse o [Wokwi](https://wokwi.com/).
-2. Crie ou abra um projeto ESP32.
-3. Utilize o código do arquivo `iot/sketch.ino`.
-4. Configure o circuito conforme o arquivo `iot/diagram.json`, se disponível.
-5. Inicie a simulação.
-6. Abra o Monitor Serial com a velocidade de 115200 baud.
-7. Gire o potenciômetro e observe as classificações exibidas.
+Os procedimentos e os nomes dos controles devem corresponder à versão efetivamente implementada no projeto.
 
-Nesta versão, a simulação ESP32 e o painel web são independentes. A leitura do potenciômetro não é enviada automaticamente ao navegador.
+## 9. Simulação IoT com ESP32 e Wokwi
 
-## 10. Testes
+A simulação do circuito pode ser acessada pelo [Wokwi](https://wokwi.com/).
 
-O painel prevê seis casos de teste para a regra de classificação:
+**Link do projeto:** [Abrir simulação do AlertaBrotas no Wokwi](https://wokwi.com/projects/477945600148705281).
 
-- 0%: Normal.
-- 49%: Normal.
-- 50%: Atenção.
-- 74%: Atenção.
-- 75%: Alerta.
-- 100%: Alerta.
+Para executar a simulação:
 
-Execute os testes no navegador e registre os resultados efetivamente observados.
+1. Abra o projeto ESP32 no Wokwi.
+2. Confira o código e os componentes configurados no circuito.
+3. Inicie a simulação.
+4. Abra o Monitor Serial, caso esteja previsto na implementação, utilizando a velocidade de 115200 baud.
+5. Interaja com o potenciômetro ou com o componente de entrada configurado.
+6. Observe os valores e as classificações apresentados.
 
-Registre também evidências das três classificações no Wokwi, caso essa simulação esteja implementada.
+Os passos dependem dos componentes e do código efetivamente configurados na simulação.
+
+### Integração entre o ESP32 e o painel web
+
+Nesta versão, a simulação ESP32 no Wokwi e o painel web funcionam de forma independente. Os valores gerados no circuito não são enviados automaticamente para a interface web.
+
+A integração entre as plataformas poderá ser desenvolvida futuramente por meio de uma API de backend ou de um protocolo de comunicação, como MQTT.
+
+## 10. Testes da regra de negócio
+
+O protótipo utiliza seis valores de referência para verificar a classificação do nível simulado de água.
+
+| Valor de entrada | Resultado esperado |
+|---|---|
+| 0% | Normal |
+| 49% | Normal |
+| 50% | Atenção |
+| 74% | Atenção |
+| 75% | Alerta |
+| 100% | Alerta |
+
+Os testes permitem verificar se a regra de negócio classifica corretamente os valores de acordo com as faixas definidas.
+
+Os resultados dependem da implementação e da execução efetiva dos testes no sistema.
 
 ## 11. Melhorias futuras
 
-- Integrar o ESP32 ao painel por MQTT ou por uma API de backend.
-- Utilizar um sensor físico apropriado e calibrado em ambiente controlado.
-- Registrar o histórico das medições e gerar gráficos.
-- Criar notificações com regras validadas por especialistas.
-- Incorporar dados oficiais adicionais e fontes de alertas públicos.
+Como possibilidades de evolução, o projeto poderá incluir:
+
+- Integração entre o ESP32 e o painel web por meio de MQTT ou de uma API de backend.
+- Utilização de um sensor físico apropriado, com calibração e testes em ambiente controlado.
+- Armazenamento do histórico das medições e geração de gráficos.
+- Implementação de notificações baseadas em critérios tecnicamente validados.
+- Incorporação de dados oficiais adicionais de monitoramento ambiental.
+- Expansão dos testes automatizados.
+- Aprimoramento da interface e da acessibilidade.
+- Desenvolvimento de uma estrutura para armazenamento e consulta dos dados.
 
 ## 12. Segurança e limitações
 
-O protótipo não deve ser utilizado para tomar decisões de emergência.
+O AlertaBrotas é um protótipo educacional e não deve ser utilizado para orientar decisões de emergência ou avaliar riscos reais de enchentes.
 
-Não publique senhas, tokens ou credenciais no GitHub.
+Os níveis apresentados são simulados e não representam medições reais de rios, limites oficiais de segurança ou previsões hidrológicas.
 
-Os níveis simulados não representam critérios técnicos oficiais e não devem ser interpretados como previsões de enchentes ou alertas reais.
+As informações meteorológicas dependem da disponibilidade da API Open-Meteo e da conexão com a internet. Eventuais falhas no serviço externo podem afetar a atualização dos dados.
+
+A simulação do ESP32 não está integrada automaticamente ao painel web nesta versão.
+
+Senhas, tokens, credenciais e outros dados confidenciais não devem ser publicados no repositório.
+
+Em situações reais de emergência, devem ser consultados os canais oficiais das autoridades competentes.
 
 ## 13. Publicação no GitHub
 
-Para publicar o projeto:
+O código-fonte e a documentação do projeto estão organizados em um repositório GitHub.
 
-1. Crie um repositório no GitHub.
-2. Adicione os arquivos do projeto.
-3. Confira se o README corresponde à implementação real.
-4. Inclua o relatório e as capturas de tela das evidências, quando disponíveis.
-5. Faça commits que representem as alterações realmente realizadas.
+**Repositório:** [Barbara-Dv/iot-brotas](https://github.com/Barbara-Dv/iot-brotas).
 
-Não inclua arquivos confidenciais, credenciais ou dados pessoais desnecessários.
+Para manter o repositório organizado:
+
+- Mantenha o README atualizado conforme a implementação.
+- Utilize commits que descrevam as alterações realizadas.
+- Confira a estrutura dos arquivos antes de publicar atualizações.
+- Não inclua credenciais, arquivos confidenciais ou dados pessoais desnecessários.
 
 ## 14. Referências
 
-- Open-Meteo. [Documentação oficial da API](https://open-meteo.com/en/docs).
-- Wokwi. [Simulador de circuitos eletrônicos](https://wokwi.com/).
-- G1. [Notícia sobre a situação de emergência em Brotas, publicada em março de 2025](https://g1.globo.com/sp/sao-carlos-regiao/noticia/2025/03/19/apos-estragos-da-chuva-brotas-decreta-situacao-de-emergencia.ghtml).
-- Prefeitura Municipal de Brotas. [Portal oficial](https://www.brotas.sp.gov.br/).
+- **Open-Meteo.** *Forecast API — documentação oficial.* Disponível em: https://open-meteo.com/en/docs.
+- **Wokwi.** *Simulador de circuitos eletrônicos.* Disponível em: https://wokwi.com/.
+- **G1 — São Carlos e Araraquara.** *Após estragos da chuva, Brotas decreta situação de emergência.* Publicado em 19 de março de 2025. Disponível em: https://g1.globo.com/sp/sao-carlos-regiao/noticia/2025/03/19/apos-estragos-da-chuva-brotas-decreta-situacao-de-emergencia.ghtml.
+- **Prefeitura Municipal de Brotas.** *Portal oficial.* Disponível em: https://www.brotas.sp.gov.br/.

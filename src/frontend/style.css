@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
 
 :root {
@@ -500,6 +501,75 @@ input[type="range"] {
   font-size: 0.83rem;
 }
 
+/* SIMULAÇÃO WOKWI */
+
+.wokwi-card {
+  position: relative;
+  overflow: hidden;
+  margin: 30px 0;
+  padding: clamp(22px, 4vw, 30px);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(127, 58, 237, 0.09),
+      transparent 40%
+    ),
+    var(--white);
+  box-shadow: 0 8px 24px rgba(40, 25, 65, 0.045);
+}
+
+.wokwi-card .eyebrow {
+  margin-bottom: 9px;
+}
+
+.wokwi-card h2 {
+  margin: 0 0 10px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+.wokwi-card p:not(.eyebrow) {
+  max-width: 620px;
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.wokwi-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 12px 18px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: var(--violet);
+  color: var(--white);
+  font-size: 0.88rem;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 5px 14px rgba(127, 58, 237, 0.2);
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.wokwi-link:hover {
+  transform: translateY(-2px);
+  background: #682bd0;
+  box-shadow: 0 8px 20px rgba(127, 58, 237, 0.25);
+}
+
+.wokwi-link:focus-visible {
+  outline: 3px solid var(--violet);
+  outline-offset: 4px;
+}
+
 /* TESTES */
 
 .test-card {
@@ -636,6 +706,14 @@ footer p {
 
   .metric.large {
     font-size: 2.8rem;
+  }
+
+  .wokwi-card {
+    padding: 22px 20px;
+  }
+
+  .wokwi-link {
+    width: 100%;
   }
 
   footer {

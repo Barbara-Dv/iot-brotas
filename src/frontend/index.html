@@ -1,66 +1,104 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Protótipo acadêmico de monitoramento ambiental para Brotas, SP.">
+  <meta
+    name="description"
+    content="Protótipo acadêmico de monitoramento ambiental para Brotas, SP."
+  >
+  <meta name="theme-color" content="#000000">
+
   <title>AlertaBrotas | Monitoramento Ambiental</title>
+
   <link rel="stylesheet" href="style.css">
   <script src="app.js" defer></script>
 </head>
+
 <body>
   <header class="topbar">
-    <a class="brand" href="#" aria-label="AlertaBrotas início">
+    <a class="brand" href="#" aria-label="AlertaBrotas - início">
       <span class="brand-icon">AB</span>
       <span>Alerta<span class="accent">Brotas</span></span>
     </a>
+
     <span class="prototype-tag">PROTÓTIPO ACADÊMICO</span>
   </header>
 
   <main class="container">
+
+    <!-- ABERTURA -->
     <section class="hero">
       <p class="eyebrow">MONITORAMENTO AMBIENTAL · BROTAS/SP</p>
-      <h1>Informação para <span class="accent">agir melhor.</span></h1>
+
+      <h1>
+        Informação para <span class="accent">agir melhor.</span>
+      </h1>
+
       <p class="hero-text">
         Painel demonstrativo que combina dados meteorológicos públicos
         com a simulação de um sensor de nível de água.
       </p>
     </section>
 
+    <!-- 01 - CONDIÇÕES METEOROLÓGICAS -->
     <section class="section-heading">
       <div>
         <p class="eyebrow">01 / CONDIÇÕES METEOROLÓGICAS</p>
         <h2>Clima na região</h2>
       </div>
-      <span id="apiStatus" class="pill neutral">Aguardando consulta</span>
+
+      <span id="apiStatus" class="pill neutral">
+        Aguardando consulta
+      </span>
     </section>
 
     <section class="weather-grid">
       <article class="card weather-card">
         <span class="card-label">Temperatura atual</span>
-        <div class="metric"><span id="temp">--</span><small>°C</small></div>
+
+        <div class="metric">
+          <span id="temp">--</span>
+          <small>°C</small>
+        </div>
+
         <p>Temperatura informada pela Open-Meteo.</p>
       </article>
 
       <article class="card weather-card">
         <span class="card-label">Chuva atual</span>
-        <div class="metric"><span id="rain">--</span><small>mm</small></div>
+
+        <div class="metric">
+          <span id="rain">--</span>
+          <small>mm</small>
+        </div>
+
         <p>Valor de chuva retornado pela API.</p>
       </article>
     </section>
 
     <div class="api-footer">
-      <span id="weatherUpdated">Os dados ainda não foram consultados.</span>
-      <button id="refreshWeather" class="button secondary" type="button">
+      <span id="weatherUpdated">
+        Os dados ainda não foram consultados.
+      </span>
+
+      <button
+        id="refreshWeather"
+        class="button secondary"
+        type="button"
+      >
         Atualizar clima
       </button>
     </div>
 
+    <!-- 02 - SIMULAÇÃO DO SENSOR -->
     <section class="section-heading level-heading">
       <div>
         <p class="eyebrow">02 / SIMULAÇÃO IoT</p>
         <h2>Nível de água simulado</h2>
       </div>
+
       <span class="pill neutral">0–100%</span>
     </section>
 
@@ -68,36 +106,92 @@
       <div class="sensor-top">
         <div>
           <p class="card-label">Leitura simulada</p>
-          <div class="metric large"><span id="valor">25%</span></div>
+
+          <div class="metric large">
+            <span id="valor">25%</span>
+          </div>
         </div>
+
         <div class="water-icon" aria-hidden="true">≈</div>
       </div>
 
-      <div class="meter" role="progressbar" aria-label="Nível de água simulado"
-           aria-valuemin="0" aria-valuemax="100" aria-valuenow="25" id="meter">
+      <div
+        class="meter"
+        id="meter"
+        role="progressbar"
+        aria-label="Nível de água simulado"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="25"
+      >
         <div id="meterFill" class="meter-fill"></div>
       </div>
 
       <label for="nivel" class="range-label">
         Ajuste o nível para testar os alertas
       </label>
-      <input id="nivel" type="range" min="0" max="100" value="25">
-      <div class="range-limits"><span>0% · Baixo</span><span>100% · Alto</span></div>
 
-      <div id="alerta" class="alert normal" role="status" aria-live="polite">
+      <input
+        id="nivel"
+        type="range"
+        min="0"
+        max="100"
+        value="25"
+      >
+
+      <div class="range-limits">
+        <span>0% · Baixo</span>
+        <span>100% · Alto</span>
+      </div>
+
+      <div
+        id="alerta"
+        class="alert normal"
+        role="status"
+        aria-live="polite"
+      >
         <strong>Status: NORMAL</strong>
         <p id="mensagem">Nível dentro da faixa didática.</p>
       </div>
 
       <p class="note">
         Esta barra é uma simulação independente do ESP32 no Wokwi.
-        Alterar o controle não altera o potenciômetro da simulação.
+        Alterar este controle não altera o potenciômetro da simulação.
       </p>
     </section>
 
+    <!-- 03 - PROJETO ESP32 NO WOKWI -->
+    <section class="wokwi-card">
+      <p class="eyebrow">03 / SIMULAÇÃO IoT</p>
+
+      <h2>Projeto ESP32 no Wokwi</h2>
+
+      <p>
+        Explore o circuito virtual e teste a simulação do ESP32
+        no ambiente Wokwi.
+      </p>
+
+      <a
+        class="wokwi-link"
+        href="https://wokwi.com/projects/477945600148705281"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Explorar simulação
+        <span aria-hidden="true">↗</span>
+      </a>
+
+      <p class="note">
+        A simulação funciona independentemente deste painel web.
+        Os valores apresentados no painel são demonstrativos e não
+        representam medições reais do nível de água de um rio.
+      </p>
+    </section>
+
+    <!-- 04 - REGRAS DE CLASSIFICAÇÃO -->
     <section class="section-heading">
       <div>
-        <p class="eyebrow">03 / REGRA DE NEGÓCIO</p>
+        <p class="eyebrow">04 / REGRA DE NEGÓCIO</p>
         <h2>Faixas de classificação</h2>
       </div>
     </section>
@@ -108,11 +202,13 @@
         <h3>Normal</h3>
         <p>0% a 49%</p>
       </article>
+
       <article class="rule-card rule-attention">
         <span class="rule-dot"></span>
         <h3>Atenção</h3>
         <p>50% a 74%</p>
       </article>
+
       <article class="rule-card rule-danger">
         <span class="rule-dot"></span>
         <h3>Alerta</h3>
@@ -126,36 +222,58 @@
       alertas oficiais ou orientações da Defesa Civil.
     </p>
 
+    <!-- 05 - TESTES -->
     <section class="section-heading">
       <div>
-        <p class="eyebrow">04 / TESTES</p>
+        <p class="eyebrow">05 / TESTES</p>
         <h2>Verificação da regra</h2>
       </div>
     </section>
 
     <section class="card test-card">
       <p>Execute os seis casos de teste e confira os resultados.</p>
-      <button id="runTests" class="button primary" type="button">
+
+      <button
+        id="runTests"
+        class="button primary"
+        type="button"
+      >
         Executar testes
       </button>
-      <p id="testResult" class="test-result" role="status" aria-live="polite">
+
+      <p
+        id="testResult"
+        class="test-result"
+        role="status"
+        aria-live="polite"
+      >
         Testes ainda não executados.
       </p>
+
       <div id="testDetails"></div>
     </section>
 
+    <!-- FONTES -->
     <section class="source-note">
       <h2>Fonte dos dados meteorológicos</h2>
+
       <p>
-        API Open-Meteo — consulta pública sem chave de autenticação para
-        este uso demonstrativo.
+        API Open-Meteo — dados meteorológicos públicos utilizados
+        neste protótipo demonstrativo.
       </p>
-      <a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener noreferrer">
+
+      <a
+        href="https://open-meteo.com/en/docs"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Consultar documentação oficial ↗
       </a>
     </section>
+
   </main>
 
+  <!-- RODAPÉ -->
   <footer>
     <p>AlertaBrotas · Projeto acadêmico de IoT · Brotas, São Paulo</p>
     <p>Dados meteorológicos externos + nível de água simulado</p>
