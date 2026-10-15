@@ -73,31 +73,26 @@ Os limites são didáticos e foram definidos para demonstrar a lógica de progra
 
 ## 7. Estrutura dos arquivos
 
-A estrutura prevista para o projeto é:
+O projeto está organizado em uma pasta principal e contém os arquivos responsáveis pela interface web e pelo funcionamento da aplicação.
 
 ```text
 iot-brotas/
-├── README.md
-├── index.html
-├── style.css
-├── app.js
-├── RELATORIO.md
-└── iot/
-    ├── sketch.ino
-    └── diagram.json
+└── src/
+    └── frontend/
+        ├── app.js
+        ├── index.html
+        └── style.css
+└── README.md
 ```
 
 **Descrição dos arquivos:**
 
-- `README.md`: documentação principal do projeto.
-- `index.html`: estrutura da interface.
-- `style.css`: estilos e responsividade.
-- `app.js`: consulta à API, atualização da interface e testes.
-- `iot/sketch.ino`: código do ESP32.
-- `iot/diagram.json`: configuração do circuito simulado no Wokwi.
-- `RELATORIO.md`: relatório técnico em Markdown.
+- `README.md`: documentação principal do projeto, com informações sobre seus objetivos, funcionalidades e instruções de execução.
+- `src/frontend/index.html`: estrutura HTML da interface do sistema.
+- `src/frontend/style.css`: estilos visuais da interface, incluindo a organização dos elementos e a responsividade.
+- `src/frontend/app.js`: lógica JavaScript responsável pelo comportamento da interface e pela interação com os dados do sistema.
 
-A estrutura acima é uma referência. Mantenha no repositório apenas os arquivos e pastas que realmente existirem no projeto.
+A organização dos arquivos separa os componentes da interface web, facilitando a manutenção e a evolução do projeto.
 
 ## 8. Como executar a interface
 
